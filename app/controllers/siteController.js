@@ -3,7 +3,7 @@ class siteController {
 
     index(req, res, next){
         let todoItems = []
-        let inProcessItems = [] 
+        let inProgressItems = [] 
         let doneItems = []
         Item.find({})
             .then(items => {
@@ -12,8 +12,8 @@ class siteController {
                         case "todo":
                             todoItems.push(item)
                             break;
-                        case "inProcess":
-                            inProcessItems.push(item)
+                        case "inProgress":
+                            inProgressItems.push(item)
                             break
                         case "done":
                             doneItems.push(item)
@@ -22,7 +22,7 @@ class siteController {
                             break;
                     }
                 })
-                res.render("index.ejs", {todoItems, inProcessItems, doneItems})
+                res.render("index.ejs", {todoItems, inProgressItems, doneItems})
             })
     }
 

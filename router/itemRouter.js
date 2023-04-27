@@ -4,14 +4,16 @@ let addItemController = require("../app/controllers/addItemController")
 let updateItemController = require("../app/controllers/updateItemController")
 
 // Add Item
-// [POST] /item
+    // [POST] /item
 router.post("/add/todo", addItemController.todo)
 router.post("/add/in-process", addItemController.inProcess)
 router.post("/add/done", addItemController.done)
 
 // Update Item
-// [PUT] /item
-router.put("/update/:itemStringedID", updateItemController.updateItemContent)
+    // [PATCH] /item/update/content
+router.patch("/update/content/:itemStringedID", updateItemController.updateItemContent)
+    // [PATCH] /item/update/section
+router.patch("/update/section/:itemStringedID", updateItemController.updateItemSection)
 
 
 module.exports = router

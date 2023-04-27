@@ -64,7 +64,8 @@ button.add-item-btn {
   width: 88%;
   margin: .8em auto;
   padding: .8em .8em;
-  background-color: #fadb6f; }
+  background-color: #fadb6f;
+  cursor: move; }
   .item p {
     padding: 0;
     margin: 0;
@@ -97,5 +98,9 @@ button.add-item-btn {
   margin: 0;
   overflow-y: auto;
   height: max-content;
-  border: none;
-  outline: none; }
+  outline: none;
+  cursor: text; }
+
+.dragging {
+  opacity: .5;
+  background-color: red; }

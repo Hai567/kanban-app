@@ -1,4 +1,4 @@
-let updateForm = document.querySelector("form#update-form")
+var updateForm = document.querySelector("form#update-form")
 let inputUpdateContent = document.querySelector("input#input-update-content")
 document.querySelectorAll(".board-container .board-section .item p").forEach(function(event){
 	event.ondblclick = function(){
@@ -7,29 +7,27 @@ document.querySelectorAll(".board-container .board-section .item p").forEach(fun
         editingItem.setAttribute("contenteditable", "true")
         editingItem.classList.add("editing-field")
 		editingItem.textContent = givenValue
-		this.textContent = ""
-		this.appendChild(editingItem)
-		editingItem.focus()
         editingItem.addEventListener("keypress", function(event){
             if (event.key === "Enter"){
                 editingItem.blur()
             }
         })
 		editingItem.onblur = function(){
+            // If Nothing Has Been Changed Or The Update Field Is Empty, Do Nothing
+            if (editingItem.textContent === "" || editingItem.textContent === givenValue){
+                    this.parentNode.innerHTML = givenValue;
+            }
             // If User Changed Sth, Update It
-            if (editingItem.textContent != ""){
+            else{
                 let updatedContent = this.textContent
                 let updateItemStringedId = event.getAttribute("data-itemStringedID")
-                this.parentNode.textContent = updatedContent
-                updateForm.setAttribute("action", `/item/update/${updateItemStringedId}?_method=PUT`)
+                updateForm.setAttribute("action", `/item/update/content/${updateItemStringedId}?_method=PATCH`)
                 inputUpdateContent.value = updatedContent
                 updateForm.submit()
             }
-            //
-            // If Nothing Has Been Changed Or The Update Field Is Empty, Do Nothing
-            else{
-                editingItem.textContent = givenValue
-            }
 		}
+		this.textContent = ""
+		this.appendChild(editingItem)
+		editingItem.focus()
 	}
 })
