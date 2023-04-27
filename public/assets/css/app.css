@@ -1,0 +1,101 @@
+body, main {
+  padding: 0;
+  margin: 0;
+  width: 100%; }
+
+*::selection {
+  background-color: #E86A33; }
+
+div.board-container {
+  width: 90%;
+  margin: auto;
+  border-radius: 15px; }
+  div.board-container div.different-sections {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px; }
+
+.main {
+  padding: 4em; }
+
+.outer-shadding {
+  box-shadow: 16px 16px 32px #aaaaaa, -16px -16px 32px #ffffff; }
+
+.relative-position {
+  position: relative; }
+
+.stay-at-bottom {
+  position: absolute;
+  bottom: 0; }
+
+.none-display {
+  display: none; }
+
+div.board-section {
+  min-height: 60vh;
+  padding-bottom: 3.5em;
+  border-radius: 15px; }
+
+div.add-item {
+  width: 100%; }
+
+div.add-item form {
+  display: flex;
+  height: 3em; }
+
+div.add-item form input {
+  flex-grow: 1;
+  border: none;
+  text-align: center;
+  border-bottom-left-radius: 15px; }
+
+div.add-item form input:focus-visible {
+  outline: none; }
+
+input.centered-placeholder::placeholder {
+  text-align: center; }
+
+button.add-item-btn {
+  border: none;
+  padding: 0px 18px;
+  border-bottom-right-radius: 15px; }
+
+.item {
+  width: 88%;
+  margin: .8em auto;
+  padding: .8em .8em;
+  background-color: #fadb6f; }
+  .item p {
+    padding: 0;
+    margin: 0;
+    font-family: "Ubuntu", sans-serif !important;
+    font-weight: 500; }
+
+.glass-effect {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18); }
+
+.section-heading {
+  padding-top: 1em;
+  padding-bottom: 1.5em;
+  text-align: center; }
+  .section-heading h3 {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800; }
+  .section-heading p {
+    margin: 0;
+    font-size: 14px; }
+
+.editing-field {
+  background-color: #fadb6f;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+  overflow-y: auto;
+  height: max-content;
+  border: none;
+  outline: none; }
