@@ -1,0 +1,70 @@
+@import "fonts";
+@import "colors";
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+div.main{
+    width: 70%;
+    margin: auto;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    div.sign-container{
+        max-width: 1024px;
+        display: grid;
+        grid-template-columns: 30% 70%;
+        box-shadow:  18px 18px 36px #c1c1c1,
+                    -18px -18px 36px #ffffff;
+        padding: 4em;
+        .sign-form-container{
+            width: 90%;
+            margin: auto;
+            text-align: center;
+            h1{
+                margin-top: 0;
+            }
+            form{
+                text-align: center;
+                input{
+                    margin: 1em 0;
+                    width: 90%;
+                    border: none;
+                    outline: none;
+                    border-bottom: 2px solid black;
+                }
+                input[type="password"]:last-of-type{
+                    margin-bottom: .5em;
+                }
+                div.instruction{
+                    font-size: 8px;
+                    color: red;
+                    padding-bottom: 2.5em;
+                }
+                button{
+                    width: 90%;
+                    cursor: pointer;
+                }
+            }
+        }
+        .sign-img{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
+
+.disabled-button{
+    cursor: default !important;
+}
+
+.none-display{
+    display: none;
+}

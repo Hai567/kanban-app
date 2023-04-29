@@ -1,9 +1,10 @@
 <%- include("./components/header.ejs") %>
+<link rel="stylesheet" href="/assets/css/app.css">
 
     <div class="main">
         <div class="board-container outer-shadding">
             <div class="different-sections">
-                <div class="todos-section board-section glass-effect relative-position">
+                <div class="todo-section board-section glass-effect relative-position">
                     <div class="section-heading">
                         <h3>Todo</h3>
                         <p>These Items Has Not Been Started</p>
@@ -64,6 +65,6 @@
         <input id="input-update-content" type="text" name="updated-content">
         <input id="input-update-section" type="text" name="updated-section">
     </form>
-    <script src="/assets/js/updateItemOnDoubleClick.js"></script>
-    <script src="/assets/js/draggingItem.js"></script>
+    <script src="/assets/js/updateItemContentOnDoubleClick.js"></script>
+    <script src="/assets/js/updateItemSectionOnDragging.js"></script>
 <%- include("./components/footer.ejs") %>
