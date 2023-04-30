@@ -49,6 +49,28 @@ div.main{
                     cursor: pointer;
                 }
             }
+            hr{
+                margin-top: 1.5em;
+            }
+            h4{
+                margin-top: 0;
+                margin-bottom: 1em;
+            }
+            div.other-methods{
+                width: 70%;
+                margin: auto;
+                display: flex;
+                justify-content: space-around;
+                .google-method{
+                    color: $google-red-icon;
+                }
+                .facebook-method{
+                    color: $facebook-blue-icon;
+                }
+                .apple-method{
+                    color: $apple-black-icon;
+                }
+            }
         }
         .sign-img{
             display: flex;
@@ -67,4 +89,8 @@ div.main{
 
 .none-display{
     display: none;
+}
+
+.other-method-icon{
+    font-size: 2em;
 }

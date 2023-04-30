@@ -13,4 +13,16 @@ router.post("/sign-in", passport.authenticate("local", {
 }))
 router.post("/sign-up", authController.addUser)
 
+// Google Oauth
+app.get("/auth/google", passport.authenticate("google", {
+     scope: ["profile", "email", "openid"] 
+}));
+
+app.get("/auth/google/callback", 
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/");
+  });
+
 module.exports = router

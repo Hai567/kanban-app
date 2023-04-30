@@ -38,6 +38,22 @@ div.main {
         div.main div.sign-container .sign-form-container form button {
           width: 90%;
           cursor: pointer; }
+      div.main div.sign-container .sign-form-container hr {
+        margin-top: 1.5em; }
+      div.main div.sign-container .sign-form-container h4 {
+        margin-top: 0;
+        margin-bottom: 1em; }
+      div.main div.sign-container .sign-form-container div.other-methods {
+        width: 70%;
+        margin: auto;
+        display: flex;
+        justify-content: space-around; }
+        div.main div.sign-container .sign-form-container div.other-methods .google-method {
+          color: #DB4437; }
+        div.main div.sign-container .sign-form-container div.other-methods .facebook-method {
+          color: #3b5998; }
+        div.main div.sign-container .sign-form-container div.other-methods .apple-method {
+          color: black; }
     div.main div.sign-container .sign-img {
       display: flex;
       align-items: center;
@@ -50,3 +66,6 @@ div.main {
 
 .none-display {
   display: none; }
+
+.other-method-icon {
+  font-size: 2em; }
