@@ -24,8 +24,8 @@ class addItemController{
     }
 
     // [POST] /item/add/in-process
-    inProcess(req, res ,next){
-        createItem(req.body.content, res, "inProcess")
+    inProgress(req, res ,next){
+        createItem(req.body.content, res, "inProgress")
     }
 
     // [POST] /item/add/done

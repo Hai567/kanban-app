@@ -6,7 +6,7 @@ let updateItemController = require("../app/controllers/updateItemController")
 // Add Item
     // [POST] /item
 router.post("/add/todo", addItemController.todo)
-router.post("/add/in-process", addItemController.inProcess)
+router.post("/add/in-progress", addItemController.inProgress)
 router.post("/add/done", addItemController.done)
 
 // Update Item
