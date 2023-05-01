@@ -13,7 +13,7 @@ div.main {
     max-width: 1024px;
     display: grid;
     grid-template-columns: 30% 70%;
-    box-shadow: 18px 18px 36px #c1c1c1, -18px -18px 36px #ffffff;
+    box-shadow: 18px 18px 36px #c1c1c1, -18px -18px 36px #ffffff;
     padding: 4em; }
     div.main div.sign-container .sign-form-container {
       width: 90%;
@@ -38,6 +38,22 @@ div.main {
         div.main div.sign-container .sign-form-container form button {
           width: 90%;
           cursor: pointer; }
+      div.main div.sign-container .sign-form-container hr {
+        margin-top: 1.5em;
+        margin-bottom: 1em; }
+      div.main div.sign-container .sign-form-container h4 {
+        margin-top: 0; }
+      div.main div.sign-container .sign-form-container div.oauth-options {
+        display: flex;
+        width: 65%;
+        margin: auto;
+        justify-content: space-around; }
+        div.main div.sign-container .sign-form-container div.oauth-options a.google-oauth {
+          color: #db4437; }
+        div.main div.sign-container .sign-form-container div.oauth-options a.facebook-oauth {
+          color: #3b5998; }
+        div.main div.sign-container .sign-form-container div.oauth-options a.apple-oauth {
+          color: black; }
     div.main div.sign-container .sign-img {
       display: flex;
       align-items: center;
@@ -50,3 +66,6 @@ div.main {
 
 .none-display {
   display: none; }
+
+.oauth-icon {
+  font-size: 2em; }

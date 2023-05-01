@@ -19,7 +19,7 @@ div.board-container {
   padding: 4em; }
 
 .outer-shadding {
-  box-shadow: 16px 16px 32px #aaaaaa, -16px -16px 32px #ffffff; }
+  box-shadow: 16px 16px 32px #aaaaaa, -16px -16px 32px #ffffff; }
 
 .relative-position {
   position: relative; }

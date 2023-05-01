@@ -9,7 +9,6 @@ let methodOverride = require('method-override')
 let session = require("express-session")
 let passport = require("passport")
 let flash = require("connect-flash")
-let initLocalStrategy = require("./app/configs/auth/localStrategy")
 
 // Connect Mongoose
 mongoose.connect("mongodb://127.0.0.1:27017/kanban-app")
@@ -23,8 +22,6 @@ app.use(session({
     }
 }))
 app.use(flash())
-// init Authentication Strategies
-initLocalStrategy()
 
 // Use Passport
 app.use(passport.initialize())
