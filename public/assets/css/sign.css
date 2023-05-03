@@ -13,7 +13,7 @@ div.main {
     max-width: 1024px;
     display: grid;
     grid-template-columns: 30% 70%;
-    box-shadow: 18px 18px 36px #c1c1c1, -18px -18px 36px #ffffff;
+    box-shadow: 18px 18px 36px #c1c1c1, -18px -18px 36px #ffffff;
     padding: 4em; }
     div.main div.sign-container .sign-form-container {
       width: 90%;
@@ -39,6 +39,7 @@ div.main {
           width: 90%;
           cursor: pointer; }
       div.main div.sign-container .sign-form-container hr {
+<<<<<<< HEAD
         margin-top: 1.5em; }
       div.main div.sign-container .sign-form-container h4 {
         margin-top: 0;
@@ -53,6 +54,22 @@ div.main {
         div.main div.sign-container .sign-form-container div.other-methods .facebook-method {
           color: #3b5998; }
         div.main div.sign-container .sign-form-container div.other-methods .apple-method {
+=======
+        margin-top: 1.5em;
+        margin-bottom: 1em; }
+      div.main div.sign-container .sign-form-container h4 {
+        margin-top: 0; }
+      div.main div.sign-container .sign-form-container div.oauth-options {
+        display: flex;
+        width: 65%;
+        margin: auto;
+        justify-content: space-around; }
+        div.main div.sign-container .sign-form-container div.oauth-options a.google-oauth {
+          color: #db4437; }
+        div.main div.sign-container .sign-form-container div.oauth-options a.facebook-oauth {
+          color: #3b5998; }
+        div.main div.sign-container .sign-form-container div.oauth-options a.apple-oauth {
+>>>>>>> 33b1dbb93d7f939dbb1ea8accfccbe2fa011e35a
           color: black; }
     div.main div.sign-container .sign-img {
       display: flex;
@@ -67,5 +84,9 @@ div.main {
 .none-display {
   display: none; }
 
+<<<<<<< HEAD
 .other-method-icon {
+=======
+.oauth-icon {
+>>>>>>> 33b1dbb93d7f939dbb1ea8accfccbe2fa011e35a
   font-size: 2em; }

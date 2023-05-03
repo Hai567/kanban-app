@@ -3,6 +3,13 @@ let router = express.Router()
 let authController = require("../app/controllers/authController")
 let passport = require("passport")
 
+let initGoogleOauth = require("../app/configs/auth/googleOauth2Strategy")
+let initLocalStrategy = require("../app/configs/auth/localStrategy")
+
+// init Authentication Strategies
+initLocalStrategy()
+initGoogleOauth()
+
 router.get("/sign-in", authController.signIn)
 router.get("/sign-up", authController.signUp)
 
@@ -14,15 +21,12 @@ router.post("/sign-in", passport.authenticate("local", {
 router.post("/sign-up", authController.addUser)
 
 // Google Oauth
-app.get("/auth/google", passport.authenticate("google", {
-     scope: ["profile", "email", "openid"] 
+router.get("/google/callback", passport.authenticate("google", { 
+    failureRedirect: "/auth/login",
+    successRedirect: "/"
 }));
 
-app.get("/auth/google/callback", 
-  passport.authenticate("google", { failureRedirect: "/login" }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect("/");
-  });
+router.get("/google",
+  passport.authenticate("google", { scope: ["profile", "email", "openid"] }));
 
 module.exports = router

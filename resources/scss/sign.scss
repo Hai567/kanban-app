@@ -51,23 +51,23 @@ div.main{
             }
             hr{
                 margin-top: 1.5em;
+                margin-bottom: 1em;
             }
             h4{
                 margin-top: 0;
-                margin-bottom: 1em;
             }
-            div.other-methods{
-                width: 70%;
-                margin: auto;
+            div.oauth-options{
                 display: flex;
+                width: 65%;
+                margin: auto;
                 justify-content: space-around;
-                .google-method{
+                a.google-oauth{
                     color: $google-red-icon;
                 }
-                .facebook-method{
+                a.facebook-oauth{
                     color: $facebook-blue-icon;
                 }
-                .apple-method{
+                a.apple-oauth{
                     color: $apple-black-icon;
                 }
             }
@@ -91,6 +91,6 @@ div.main{
     display: none;
 }
 
-.other-method-icon{
+.oauth-icon{
     font-size: 2em;
 }
