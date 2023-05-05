@@ -1,0 +1,93 @@
+@import "colors";
+@import "fonts";
+
+
+div.board-container{
+    grid-column: 4/13;
+    width: 100%;
+    margin: auto;
+    div.different-sections{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+        div.todo-section{
+            // background-color: red;
+        }
+        div.in-progress-section{
+            // background-color: blue;
+        }
+        div.done-section{
+            // background-color: green;
+        }
+    }
+}
+
+div.board-section{
+    min-height: 60vh;
+    padding-bottom: 3.5em;
+    border-radius: 15px;
+}
+
+div.add-item{
+    width: 100%;
+}
+div.add-item form{
+    display: flex;
+    height: 3em;
+}
+div.add-item form input{
+    flex-grow: 1;
+    border: none;
+    text-align: center;
+    border-bottom-left-radius: 15px;
+}
+div.add-item form input:focus-visible{
+    outline: none;
+}
+input.centered-placeholder::placeholder{
+    text-align: center;
+}
+button.add-item-btn{
+    border: none;
+    padding: 0px 18px;
+    border-bottom-right-radius: 15px;
+}
+
+.item{
+    width: 88%;
+    margin: .8em auto;
+    padding: .8em .8em;
+    background-color: $item-color;
+    cursor: move;
+    p{
+        padding: 0;
+        margin: 0;
+        font-family: $item-font !important;
+        font-weight: $item-medium;
+    }
+}
+.section-heading{
+    padding-top: 1em;
+    padding-bottom: 1.5em;
+    text-align: center;
+    h3{
+        text-align: center;
+        font-family: $heading-font;
+        font-weight: $heading-extra-bold;
+    }
+    p{
+        margin: 0;
+        font-size: 14px;
+    }
+}
+
+.editing-field{
+    background-color: $item-color;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+    overflow-y: auto;
+    height: max-content;
+    outline: none;
+    cursor: text;
+}

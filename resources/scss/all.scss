@@ -1,0 +1,36 @@
+body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+*::selection{
+    background-color: #E86A33;
+}
+
+.outer-shadding{
+    box-shadow:  16px 16px 32px #aaaaaa,
+                -16px -16px 32px #ffffff;
+}
+.relative-position{
+    position: relative;
+}
+.stay-at-bottom{
+    position: absolute;
+    bottom: 0;
+}
+.none-display{
+    display: none;
+}
+.glass-effect{
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    // border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.dragging{
+    opacity: .5;
+    background-color: red;
+}

@@ -22,6 +22,7 @@ class authController {
                     User.create({
                         email: req.body.email,
                         userName: req.body.userName,
+                        loginMethod: "Email And Password",
                         hashedPassword,
                     })
                     res.redirect("/auth/sign-in")

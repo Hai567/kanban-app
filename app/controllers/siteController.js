@@ -1,11 +1,11 @@
-let Item = require("../models/itemModel")
+let Kanban = require("../models/kanbanModel")
 class siteController {
-
-    index(req, res, next){
+    async index(req, res, next){
+        let userKanbans = await Kanban.find({userStringedID: "abc"})
         let todoItems = []
         let inProgressItems = [] 
         let doneItems = []
-        Item.find({})
+        Kanban.find({})
             .then(items => {
                 items.forEach((item) => {
                     switch (item.section) {
@@ -22,7 +22,7 @@ class siteController {
                             break;
                     }
                 })
-                res.render("index.ejs", {todoItems, inProgressItems, doneItems})
+                res.render("index.ejs", {todoItems, inProgressItems, doneItems, userKanbans})
             })
     }
 

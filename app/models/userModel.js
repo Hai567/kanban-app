@@ -3,6 +3,10 @@ let Schema = mongoose.Schema
 let findThingsOrCreateThings = require("../plugins/findThingsOrCreateThings")
 
 let userSchema = Schema({
+    _id: {
+        type: String,
+        default: new mongoose.Types.ObjectId
+    },
     email: String,
     hashedPassword: String,
     avatar: String,
@@ -10,7 +14,6 @@ let userSchema = Schema({
     loginMethod: String,
     googleId: String,
     facebookId: String,
-    loginType: String,
 })
 
 userSchema.plugin(findThingsOrCreateThings)

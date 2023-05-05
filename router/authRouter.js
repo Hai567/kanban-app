@@ -24,9 +24,10 @@ router.post("/sign-up", authController.addUser)
 router.get("/google/callback", passport.authenticate("google", { 
     failureRedirect: "/auth/login",
     successRedirect: "/"
-}));
+}))
 
-router.get("/google",
-  passport.authenticate("google", { scope: ["profile", "email", "openid"] }));
+router.get("/google", passport.authenticate("google", {
+   scope: ["profile", "email", "openid"] 
+}))
 
 module.exports = router
