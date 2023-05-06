@@ -13,7 +13,7 @@ div.main {
     max-width: 1024px;
     display: grid;
     grid-template-columns: 30% 70%;
-    box-shadow: 18px 18px 36px #c1c1c1, -18px -18px 36px #ffffff;
+    box-shadow: 18px 18px 36px #c1c1c1, -18px -18px 36px #ffffff;
     padding: 4em; }
     div.main div.sign-container .sign-form-container {
       width: 90%;

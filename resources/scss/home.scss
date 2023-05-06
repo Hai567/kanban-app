@@ -1,14 +1,52 @@
 @import "fonts";
 @import "colors";
 
-div.main{
+div.main {
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    div.side-bar{
+    div.side-bar {
         grid-column: 1/4;
     }
-    .board-container{
+    .board-container {
         grid-column: 4/13;
     }
+}
+
+.different-kanban {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .kanban-link {
+        text-decoration: none;
+        color: black;
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        P {
+            margin: 1em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-family: $heading-font;
+            font-weight: $heading-bold;
+        }
+    }
+    .delete-kanban {
+        color: $red-trash-can;
+        i {
+            transition: all 1s;
+            font-size: 1.3em;
+            padding: 1em;
+            display: none;
+        }
+    }
+}
+.different-kanban:hover .delete-kanban i {
+    display: block;
+}
+hr {
+    margin: 0;
 }

@@ -5,6 +5,9 @@ let specificUserThingsController = require("../app/controllers/specificUserThing
 // /user/:userStringedID/kanban/:kanbanStringedID
 router.get("/:userStringedID/kanban/:kanbanStringedID", specificUserThingsController.getKanbanDetail)
 
+// Add Kanban
+router.post("/:userStringedID/kanban/add", specificUserThingsController.addNewKanban)
+
 // Add Item
 router.post("/:userStringedID/kanban/:kanbanStringedID/item/add/:section", specificUserThingsController.addNewItemToKanban)
 

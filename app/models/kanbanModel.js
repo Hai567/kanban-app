@@ -1,9 +1,12 @@
 let mongoose = require("mongoose")
 let Schema = mongoose.Schema
+let findThingsOrCreateThings = require("../plugins/findThingsOrCreateThings")
 
-let KanbanSchema = Schema ({
+let kanbanSchema = Schema ({
     userStringedID: String,
     kanbanName: String
 }, {timestamps: true})
 
-module.exports = mongoose.model("Kanban", KanbanSchema)
+kanbanSchema.plugin(findThingsOrCreateThings)
+
+module.exports = mongoose.model("Kanban", kanbanSchema)

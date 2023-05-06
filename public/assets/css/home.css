@@ -6,3 +6,36 @@ div.main {
     grid-column: 1/4; }
   div.main .board-container {
     grid-column: 4/13; }
+
+.different-kanban {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .different-kanban .kanban-link {
+    text-decoration: none;
+    color: black;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+    .different-kanban .kanban-link P {
+      margin: 1em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700; }
+  .different-kanban .delete-kanban {
+    color: #FF6969; }
+    .different-kanban .delete-kanban i {
+      transition: all 1s;
+      font-size: 1.3em;
+      padding: 1em;
+      display: none; }
+
+.different-kanban:hover .delete-kanban i {
+  display: block; }
+
+hr {
+  margin: 0; }

@@ -3,9 +3,24 @@
     <div class="main">
         <div class="side-bar">
             <% kanbans.forEach(kanban => { %>
-                <a href="/user/abc/kanban/<%= kanban._id.toString() %>"><p><%= kanban.kanbanName %></p></a>
+                <div class="side-bar-kanban-name">
+                    <div class="different-kanban">
+                        <a class="kanban-link" href="/user/abc/kanban/<%= kanban._id.toString() %>">
+                            <p><%= kanban.kanbanName %></p>
+                        </a>
+                        <a class="delete-kanban" href="">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </div>
+                </div>
+                <hr>
             <% }) %>
-
+            <div class="add-new-kanban-container stay-at-bottom">
+                <form action="/user/abc/kanban/add" method="POST">
+                    <input type="text" name="kanbanName">
+                    <button type="submit"><i class="fa-solid fa-plus"></i></button>
+                </form>
+            </div>
         </div>
         <div class="board-container outer-shadding">
             <div class="different-sections">

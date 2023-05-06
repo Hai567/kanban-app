@@ -33,6 +33,32 @@ class specificUserThingsController {
             })
     }
 
+    addNewKanban(req, res, next){
+        let userStringedID = req.params.userStringedID
+        let kanbanName = req.body.kanbanName
+        Kanban.findThingsOrCreateThings({
+            userStringedID,
+            kanbanName
+        })
+        // Create New Item For The Kanban Right After Created That Kanban Because There Need Sth In The DB To Find Or Return null
+            .then((newKanban) => {
+                let kanbanStringedID = newKanban._id.toString()
+                Item.create({
+                    userStringedID,
+                    kanbanStringedID
+                })
+                    .then(result => {
+                        if(result){
+                            res.redirect("/")
+                        }else{
+                            console.log("Can Not Create New Kanban")
+                        }
+                    })
+                    .catch(err => console.log("There Is Some Err While Creating New Item Right After Created New Kanban in specificUserThingsController [create]", err))
+            })
+            .catch(err => console.log("There Is Some Err While Creating New Kanban specificUserThingsController [create]", err))
+    }
+
     addNewItemToKanban(req, res, next){
         let userStringedID = req.params.userStringedID
         let kanbanStringedID = req.params.kanbanStringedID
