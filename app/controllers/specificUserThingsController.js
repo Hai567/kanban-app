@@ -3,12 +3,16 @@ let Kanban = require("../models/kanbanModel")
 let mongoose = require("mongoose")
 class specificUserThingsController {
 
-    getKanbanDetail(req, res, next){
+    async getKanbanDetail(req, res, next){
         let userStringedID = req.params.userStringedID
         let kanbanStringedID = req.params.kanbanStringedID
         let todoItems = []
         let inProgressItems = []
         let doneItems = []
+        let kanbanInfo = await Kanban.findOne({
+            userStringedID,
+            _id: new mongoose.Types.ObjectId(kanbanStringedID)
+        })
         Item.find({
             userStringedID,
             kanbanStringedID
@@ -29,7 +33,7 @@ class specificUserThingsController {
                             break;
                     }
                 })
-                res.render("kanban-detail.ejs", {items, todoItems, inProgressItems, doneItems})
+                res.render("kanban-detail.ejs", {items, todoItems, inProgressItems, doneItems, kanbanInfo})
             })
     }
 
@@ -57,6 +61,25 @@ class specificUserThingsController {
                     .catch(err => console.log("There Is Some Err While Creating New Item Right After Created New Kanban in specificUserThingsController [create]", err))
             })
             .catch(err => console.log("There Is Some Err While Creating New Kanban specificUserThingsController [create]", err))
+    }
+
+    updateKanbanName(req, res, next){
+        let updatedKanbanName = req.body["updated-kanban-name"]
+        let userStringedID = req.params.userStringedID
+        let kanbanStringedID = req.params.kanbanStringedID
+
+        Kanban.findOneAndUpdate({
+            userStringedID,
+            _id: new mongoose.Types.ObjectId(kanbanStringedID)
+        },{kanbanName: updatedKanbanName})
+            .then(kanban => {
+                if (kanban){
+                    res.redirect(`/user/${userStringedID}/kanban/${kanbanStringedID}`)
+                }else{
+                    console.log("Can Not Update Kanban Name")
+                }
+            })
+            .catch(err => console.log("Some Err Occured While Updating Kanban Name In specificUserThingsController", err))
     }
 
     addNewItemToKanban(req, res, next){

@@ -2,6 +2,10 @@
 <link rel="stylesheet" href="/assets/css/kanban-detail.css">
 
     <div class="main">
+        <div class="kanban-heading">
+            <p class="created-at">Created At: <%= kanbanInfo.createdAt.toString().slice(0, 33) %></p>
+            <h2 class="heading-kanban-name" data-userStringedID="<%= kanbanInfo.userStringedID %>" data-kanbanStringedID="<%= kanbanInfo._id.toString() %>"><%= kanbanInfo.kanbanName %></h2>
+        </div>
         <div class="board-container outer-shadding">
             <div class="different-sections">
                 <div class="todo-section board-section glass-effect relative-position">
@@ -64,9 +68,11 @@
     <form id="update-form" class="update-form none-display" action="" method="POST">
         <input id="input-update-content" type="text" name="updated-content">
         <input id="input-update-section" type="text" name="updated-section">
+        <input id="input-update-kanban-name" type="text" name="updated-kanban-name">
     </form>
     <script src="/assets/js/updateItemContentOnDoubleClick.js"></script>
     <script src="/assets/js/updateItemSectionOnDragging.js"></script>
+    <script src="/assets/js/updateKanbanNameOnDoubleClick.js"></script>
 
 
 <%- include("./components/footer.ejs") %>

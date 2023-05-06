@@ -35,17 +35,20 @@ div.main {
         }
     }
     .delete-kanban {
-        color: $red-trash-can;
+        color: $light-red-trash-can;
         i {
-            transition: all 1s;
-            font-size: 1.3em;
-            padding: 1em;
+            transition: all .1s;
+            font-size: 1.8em;
+            padding: .5em;
             display: none;
         }
     }
 }
 .different-kanban:hover .delete-kanban i {
     display: block;
+}
+.delete-kanban:hover i {
+    color: $dark-red-trash-can;
 }
 hr {
     margin: 0;

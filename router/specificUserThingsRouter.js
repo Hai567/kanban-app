@@ -8,6 +8,10 @@ router.get("/:userStringedID/kanban/:kanbanStringedID", specificUserThingsContro
 // Add Kanban
 router.post("/:userStringedID/kanban/add", specificUserThingsController.addNewKanban)
 
+// Update Kanban Name
+router.patch("/:userStringedID/kanban/:kanbanStringedID/update/name", specificUserThingsController.updateKanbanName)
+
+
 // Add Item
 router.post("/:userStringedID/kanban/:kanbanStringedID/item/add/:section", specificUserThingsController.addNewItemToKanban)
 
