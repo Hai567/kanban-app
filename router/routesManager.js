@@ -1,11 +1,11 @@
 let siteRouter = require("./siteRouter")
 let itemRouter = require("./itemRouter")
 let authRouter = require("./authRouter")
-let differentKanbanRouter = require("./kanbanDetailRouter")
+let specificUserThingsRouter = require("./specificUserThingsRouter")
 
 module.exports = function routesManager(app){
-    //
-    app.use("/user", differentKanbanRouter)
+    // Secific User Router (/user/:userStringedID)
+    app.use("/user", specificUserThingsRouter)
     // Auth Router
     app.use("/auth", authRouter)
     //

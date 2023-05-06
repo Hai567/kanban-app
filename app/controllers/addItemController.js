@@ -1,41 +1,36 @@
-let Kanban = require("../models/kanbanModel")
-let mongoose = require("mongoose")
+let Item = require("../models/itemModel")
 
-let createItem = function(content, res, section, userStringedID, kanbanID){
-    Kanban.findOneAndUpdate({
-        userStringedID,
-        _id: new mongoose.Types.ObjectId(kanbanID)
-    }, {$push: {[section]: content}})
-        .then(result => {
-            if (result){
-                res.redirect(`/user/${userStringedID}/kanban/${kanbanID}`)
+let createItem = function(content, res, section){
+    Item.create({
+        content, 
+        section
+    })
+        .then(item => {
+            if (item){
+                res.redirect("/")
             }else{
-                console.log("Can not add new item")
+                console.log("Can Not Create New Item")
             }
         })
+        .catch(err => console.log("Error In addItemController", err))
+
 }
 
 class addItemController{
 
-    // [POST] /item/add/todo/:kanbanID/:userStringedID
+    // [POST] /item/add/todo
     todo(req, res, next){
-        let userStringedID = req.params.userStringedID
-        let kanbanID = req.params.kanbanID
-        createItem(req.body.content, res, "todo", userStringedID, kanbanID)
+        createItem(req.body.content, res, "todo")
     }
 
-    // [POST] /item/add/in-process/:kanbanID/:userStringedID
+    // [POST] /item/add/in-process
     inProgress(req, res ,next){
-        let userStringedID = req.params.userStringedID
-        let kanbanID = req.params.kanbanID
-        createItem(req.body.content, res, "inProgress", userStringedID, kanbanID)
+        createItem(req.body.content, res, "inProgress")
     }
 
-    // [POST] /item/add/done/:kanbanID/:userStringedID
+    // [POST] /item/add/done
     done(req, res, next){
-        let userStringedID = req.params.userStringedID
-        let kanbanID = req.params.kanbanID
-        createItem(req.body.content, res, "done", userStringedID, kanbanID)
+        createItem(req.body.content, res, "done")
     }
 
 }

@@ -1,22 +1,27 @@
-let Kanban = require("../models/kanbanModel")
+let Item = require("../models/itemModel")
 let mongoose = require("mongoose")
 class updateItemController {
 
     // [PATCH] /item/update/content/:itemStringedID
     updateItemContent(req, res, next){
-        let kanbanID
-        Kanban.findOne({kanbanID})
-            .then(kanban => {
-                let itemContentIndex = kanban.section.indexOf("itemContent")
-                kanban.section[itemContentIndex] = "newContent"
-                kanban.save()
+        Item.findOneAndUpdate(
+            {_id: new mongoose.Types.ObjectId(req.params.itemStringedID)},
+            {content: req.body["updated-content"]}
+            )
+            .then(item => {
+                if(item) {
+                    res.redirect("/")
+                }else{
+                    console.log("Can Not Update Item")
+                }
             })
+            .catch(err => console.log("Error In updateItemController", err))
     }
 
     // [PATCH] /item/update/section/:itemStringedID
     updateItemSection(req, res, next){
-        Kanban.findOneAndUpdate(
-            {_id: req.params.itemStringedID},
+        Item.findOneAndUpdate(
+            {_id: new mongoose.Types.ObjectId(req.params.itemStringedID)},
             {section: req.body["updated-section"]}
             )
             .then(item => {

@@ -1,0 +1,8 @@
+div.main {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); }
+  div.main div.side-bar {
+    grid-column: 1/4; }
+  div.main .board-container {
+    grid-column: 4/13; }

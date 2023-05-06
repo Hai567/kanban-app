@@ -1,6 +1,7 @@
 let passport = require("passport")
 let GoogleStrategy = require("passport-google-oauth20").Strategy
 let User = require("../../models/userModel")
+let findThingsOrCreateThings = require("../../plugins/findThingsOrCreateThings")
 
 module.exports = function initGoogleOauth(param) {  
     let GoogleStrategy = require("passport-google-oauth20").Strategy

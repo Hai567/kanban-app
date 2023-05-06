@@ -1,11 +1,10 @@
 @import "colors";
 @import "fonts";
 
-
 div.board-container{
-    grid-column: 4/13;
-    width: 100%;
+    width: 90%;
     margin: auto;
+    border-radius: 15px;
     div.different-sections{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -22,12 +21,16 @@ div.board-container{
     }
 }
 
+
+.main{
+    padding: 4em;
+}
+
 div.board-section{
     min-height: 60vh;
     padding-bottom: 3.5em;
     border-radius: 15px;
 }
-
 div.add-item{
     width: 100%;
 }
@@ -66,6 +69,8 @@ button.add-item-btn{
         font-weight: $item-medium;
     }
 }
+
+
 .section-heading{
     padding-top: 1em;
     padding-bottom: 1.5em;

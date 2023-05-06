@@ -1,11 +1,14 @@
 div.board-container {
-  grid-column: 4/13;
-  width: 100%;
-  margin: auto; }
+  width: 90%;
+  margin: auto;
+  border-radius: 15px; }
   div.board-container div.different-sections {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5px; }
+
+.main {
+  padding: 4em; }
 
 div.board-section {
   min-height: 60vh;

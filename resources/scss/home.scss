@@ -1,17 +1,14 @@
-@import "colors";
 @import "fonts";
+@import "colors";
 
-
-.main{
-    // padding: 4em;
+div.main{
+    height: 100vh;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    height: 100vh;
     div.side-bar{
         grid-column: 1/4;
-        h2{
-            text-align: center;
-        }
     }
-
+    .board-container{
+        grid-column: 4/13;
+    }
 }

@@ -3,11 +3,7 @@ let Schema = mongoose.Schema
 
 let KanbanSchema = Schema ({
     userStringedID: String,
-    todo: [String],
-    inProgress: [String],
-    done: [String],
-    number: Number,
     kanbanName: String
-})
+}, {timestamps: true})
 
 module.exports = mongoose.model("Kanban", KanbanSchema)

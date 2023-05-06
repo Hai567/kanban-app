@@ -1,8 +1,0 @@
-.main {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  height: 100vh; }
-  .main div.side-bar {
-    grid-column: 1/4; }
-    .main div.side-bar h2 {
-      text-align: center; }

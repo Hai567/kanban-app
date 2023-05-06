@@ -1,17 +1,57 @@
 <%- include("./components/header.ejs") %>
-<link rel="stylesheet" href="/assets/css/app.css">
-
+    <link rel="stylesheet" href="/assets/css/home.css">
     <div class="main">
         <div class="side-bar">
-            <h2>All Your Kanban</h2>
-            <% userKanbans.forEach(userKanban => { %>
-                <a href="/user/abc/kanban/<%= userKanban._id.toString() %>">
-                    <h4><%= userKanban.kanbanName %></h4>
-                </a>
-            <% }) %>
-            <div class="create-new-kanban">
-                
+
+        </div>
+        <div class="board-container outer-shadding">
+            <div class="different-sections">
+                <div class="todo-section board-section glass-effect relative-position">
+                    <div class="section-heading">
+                        <h3>Todo</h3>
+                        <p>These Items Has Not Been Started</p>
+                    </div>
+
+                    <div class="add-item stay-at-bottom">
+                        <form action="/item/add/todo" method="POST">
+                            <input autocomplete="off" class="centered-placeholder" type="text" placeholder="Add Item" name="content" required>
+                            <button class="add-item-btn" type="submit"><i class="fa-solid fa-plus"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="in-progress-section board-section glass-effect relative-position">
+                    <div class="section-heading">
+                        <h3>In Progress</h3>
+                        <p>These Items Are Being Done</p>
+                    </div>
+
+                    <div class="add-item stay-at-bottom">
+                        <form action="/item/add/in-progress" method="POST">
+                            <input autocomplete="off" class="centered-placeholder" type="text" placeholder="Add Item" name="content" required>
+                            <button class="add-item-btn" type="submit"><i class="fa-solid fa-plus"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="done-section board-section glass-effect relative-position">
+                    <div class="section-heading">
+                        <h3>Done</h3>
+                        <p>These Items Has Been Done</p>
+                    </div>
+
+                    <div class="add-item stay-at-bottom">
+                        <form action="/item/add/done" method="POST">
+                            <input autocomplete="off" class="centered-placeholder" type="text" placeholder="Add Item" name="content" required>
+                            <button class="add-item-btn" type="submit"><i class="fa-solid fa-plus"></i></button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <form id="update-form" class="update-form none-display" action="" method="POST">
+        <input id="input-update-content" type="text" name="updated-content">
+        <input id="input-update-section" type="text" name="updated-section">
+    </form>
+    <script src="/assets/js/updateItemContentOnDoubleClick.js"></script>
+    <script src="/assets/js/updateItemSectionOnDragging.js"></script>
 <%- include("./components/footer.ejs") %>

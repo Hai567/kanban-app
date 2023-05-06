@@ -1,19 +1,19 @@
 let express = require("express")
 let router = express.Router()
 let addItemController = require("../app/controllers/addItemController")
-let updateKanbanController = require("../app/controllers/updateKanbanController")
+let updateItemController = require("../app/controllers/updateItemController")
 
 // Add Item
     // [POST] /item
-router.post("/add/todo/:kanbanID/:userStringedID", addItemController.todo)
-router.post("/add/in-progress/:kanbanID/:userStringedID", addItemController.inProgress)
-router.post("/add/done/:kanbanID/:userStringedID", addItemController.done)
+router.post("/add/todo", addItemController.todo)
+router.post("/add/in-progress", addItemController.inProgress)
+router.post("/add/done", addItemController.done)
 
 // Update Item
     // [PATCH] /item/update/content
-router.patch("/update/content/:itemStringedID", updateKanbanController.updateItemContent)
+router.patch("/update/content/:itemStringedID", updateItemController.updateItemContent)
     // [PATCH] /item/update/section
-router.patch("/update/section/:itemStringedID", updateKanbanController.updateItemSection)
+router.patch("/update/section/:itemStringedID", updateItemController.updateItemSection)
 
 
 module.exports = router

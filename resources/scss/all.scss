@@ -1,13 +1,14 @@
-body{
-    padding: 0;
-    margin: 0;
-    width: 100%;
-}
+@import "colors";
+@import "fonts";
 
 *::selection{
     background-color: #E86A33;
 }
 
+body{
+    padding: 0;
+    margin: 0;
+}
 .outer-shadding{
     box-shadow:  16px 16px 32px #aaaaaa,
                 -16px -16px 32px #ffffff;
