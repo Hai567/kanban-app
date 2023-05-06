@@ -9,9 +9,14 @@
                         <h3>Todo</h3>
                         <p>These Items Has Not Been Started</p>
                     </div>
+                    <% todoItems.forEach(item => { %>
+                        <div class="item" draggable="true">
+                            <p data-itemStringedID="<%= item._id.toString() %>" data-userStringedID="<%= item.userStringedID %>" data-kanbanStringedID="<%= item.kanbanStringedID %>"><%= item.content %></p>
+                        </div>
+                    <% }) %>
 
                     <div class="add-item stay-at-bottom">
-                        <form action="/item/add/todo" method="POST">
+                        <form action="/user/abc/kanban/<%= items[0].kanbanStringedID %>/item/add/todo" method="POST">
                             <input autocomplete="off" class="centered-placeholder" type="text" placeholder="Add Item" name="content" required>
                             <button class="add-item-btn" type="submit"><i class="fa-solid fa-plus"></i></button>
                         </form>
@@ -22,9 +27,14 @@
                         <h3>In Progress</h3>
                         <p>These Items Are Being Done</p>
                     </div>
+                    <% inProgressItems.forEach(item => { %>
+                        <div class="item" draggable="true">
+                            <p data-itemStringedID="<%= item._id.toString() %>" data-userStringedID="<%= item.userStringedID %>" data-kanbanStringedID="<%= item.kanbanStringedID %>"><%= item.content %></p>
+                        </div>
+                    <% }) %>
 
                     <div class="add-item stay-at-bottom">
-                        <form action="/item/add/in-progress" method="POST">
+                        <form action="/user/abc/kanban/<%= items[0].kanbanStringedID %>/item/add/inProgress" method="POST">
                             <input autocomplete="off" class="centered-placeholder" type="text" placeholder="Add Item" name="content" required>
                             <button class="add-item-btn" type="submit"><i class="fa-solid fa-plus"></i></button>
                         </form>
@@ -35,9 +45,14 @@
                         <h3>Done</h3>
                         <p>These Items Has Been Done</p>
                     </div>
+                    <% doneItems.forEach(item => { %>
+                        <div class="item" draggable="true">
+                            <p data-itemStringedID="<%= item._id.toString() %>" data-userStringedID="<%= item.userStringedID %>" data-kanbanStringedID="<%= item.kanbanStringedID %>"><%= item.content %></p>
+                        </div>
+                    <% }) %>
 
                     <div class="add-item stay-at-bottom">
-                        <form action="/item/add/done" method="POST">
+                        <form action="/user/abc/kanban/<%= items[0].kanbanStringedID %>/item/add/done" method="POST">
                             <input autocomplete="off" class="centered-placeholder" type="text" placeholder="Add Item" name="content" required>
                             <button class="add-item-btn" type="submit"><i class="fa-solid fa-plus"></i></button>
                         </form>

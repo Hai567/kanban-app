@@ -3,9 +3,8 @@ class siteController {
 
     index(req, res, next){
         Kanban.find({})
-            .then(result => {
-                console.log(result)
-                res.render("index.ejs")
+            .then(kanbans => {
+                res.render("index.ejs", {kanbans})
             })
     }
 

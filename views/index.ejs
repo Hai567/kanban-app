@@ -2,6 +2,9 @@
     <link rel="stylesheet" href="/assets/css/home.css">
     <div class="main">
         <div class="side-bar">
+            <% kanbans.forEach(kanban => { %>
+                <a href="/user/abc/kanban/<%= kanban._id.toString() %>"><p><%= kanban.kanbanName %></p></a>
+            <% }) %>
 
         </div>
         <div class="board-container outer-shadding">
