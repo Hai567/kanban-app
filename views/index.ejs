@@ -2,19 +2,26 @@
     <link rel="stylesheet" href="/assets/css/home.css">
     <div class="main">
         <div class="side-bar">
-            <% kanbans.forEach(kanban => { %>
-                <div class="side-bar-kanban-name">
-                    <div class="different-kanban">
-                        <a class="kanban-link" href="/user/abc/kanban/<%= kanban._id.toString() %>">
-                            <p><%= kanban.kanbanName %></p>
-                        </a>
-                        <a class="delete-kanban" href="">
-                            <i class="fa-solid fa-trash"></i>
-                        </a>
+            <a href="/user/abc/kanban/manage-kanbans">All Your Kanbans</a>
+            <h5 style="text-align: center; margin: .5em 0;">Recently Added</h5>
+            <hr style="width: 80%; margin: auto;">
+            <% for( let i = 0; i < 8; i++ ) { %>
+                <% if (kanbans[i] && kanbans[i]._id) { %>
+                    <div class="side-bar-kanban-name">
+                        <div class="different-kanban">
+                            <a class="kanban-link" href="/user/abc/kanban/<%= kanbans[i]._id.toString() %>">
+                                <p><%= kanbans[i].kanbanName %></p>
+                            </a>
+                            <form action="/user/abc/kanban/<%= kanbans[i]._id.toString() %>/delete/soft?_method=DELETE" method="POST">
+                                <button class="delete-kanban">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <hr>
                     </div>
-                    <hr>
-                </div>
-            <% }) %>
+                <% } %>
+            <% } %>
             <div class="add-new-kanban-container stay-at-bottom">
                 <form action="/user/abc/kanban/add" method="POST">
                     <input type="text" name="kanbanName">

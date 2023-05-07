@@ -14,20 +14,25 @@ div.main {
   align-items: center; }
   .different-kanban .kanban-link {
     text-decoration: none;
-    color: black;
+    color: grey;
     flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap; }
-    .different-kanban .kanban-link P {
+    .different-kanban .kanban-link p {
       margin: 1em;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       font-family: "Montserrat", sans-serif;
       font-weight: 700; }
+  .different-kanban .kanban-link:hover {
+    color: black; }
   .different-kanban .delete-kanban {
-    color: #ff6969; }
+    color: grey;
+    background: none;
+    border: none;
+    cursor: pointer; }
     .different-kanban .delete-kanban i {
       transition: all .1s;
       font-size: 1.8em;

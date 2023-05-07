@@ -1,0 +1,18 @@
+.manage-kanban-container {
+  margin-top: 1em;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px; }
+  .manage-kanban-container div.heading {
+    flex-grow: 1; }
+  .manage-kanban-container table {
+    border-radius: 20px;
+    border: 2px solid grey; }
+    .manage-kanban-container table tbody td i {
+      color: #ff6969;
+      font-size: 1.4em; }
+    .manage-kanban-container table tbody td i:hover {
+      color: #b04759; }

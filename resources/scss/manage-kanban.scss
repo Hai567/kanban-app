@@ -1,0 +1,30 @@
+@import "fonts";
+@import "colors";
+
+.manage-kanban-container{
+    margin-top: 1em;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    div.heading{
+        flex-grow: 1;
+    }
+    table{
+        border-radius: 20px;
+        border: 2px solid grey;
+        tbody{
+            td{
+                i{
+                    color: $light-red-trash-can;
+                    font-size: 1.4em;
+                }
+                i:hover{
+                    color: $dark-red-trash-can;
+                }
+            }
+        }
+    }
+}

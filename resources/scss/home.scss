@@ -20,12 +20,12 @@ div.main {
     align-items: center;
     .kanban-link {
         text-decoration: none;
-        color: black;
+        color: grey;
         flex-grow: 1;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        P {
+        p{
             margin: 1em;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -34,8 +34,14 @@ div.main {
             font-weight: $heading-bold;
         }
     }
+    .kanban-link:hover{
+        color: black;
+    }
     .delete-kanban {
-        color: $light-red-trash-can;
+        color: grey;
+        background: none;
+        border: none;
+        cursor: pointer;
         i {
             transition: all .1s;
             font-size: 1.8em;

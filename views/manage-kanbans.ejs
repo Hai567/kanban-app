@@ -1,0 +1,37 @@
+<%- include("./components/header.ejs") %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/css/manage-kanban.css">
+
+    <div class="manage-kanban-container">
+        <div class="heading">
+            <h1 style="text-align: center; margin: 0;">All Kanban</h1>
+            <a type="button" class="btn-link" style="margin-left: 10%;" href="/course/bin">Bin</a>
+            <hr  style="width: 85%; text-align: center; margin: auto;">
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Kanban name</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Last Modified</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for( let i = 0; i < allUsersKanbans.length; i++ ) { %>
+                    <tr>
+                      <th scope="row"><%= i + 1 %></th>
+                      <td><%= allUsersKanbans[i].kanbanName %></td>
+                      <td><%= allUsersKanbans[i].createdAt %></td>
+                      <td><%= allUsersKanbans[i].updatedAt %></td>
+                      <td><a href="/user/abc/kanban/<%= kanbans[i]._id.toString() %>/delete/soft?_method=DELETE"><i class="fa-solid fa-trash-can"></i></a></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+
+<%- include("./components/footer.ejs") %>

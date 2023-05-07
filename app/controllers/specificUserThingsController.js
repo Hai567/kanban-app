@@ -3,6 +3,15 @@ let Kanban = require("../models/kanbanModel")
 let mongoose = require("mongoose")
 class specificUserThingsController {
 
+    manageKanbans(req, res, next){
+        let userStringedID = req.params.userStringedID
+        Kanban.find({userStringedID})
+            .then((allUsersKanbans) => {
+                res.render("manage-kanbans.ejs", {allUsersKanbans})
+            })
+            .catch(err => console.log("there is some err while trying to get all user's kanbans in specificUserThingsController", err))
+    }
+
     async getKanbanDetail(req, res, next){
         let userStringedID = req.params.userStringedID
         let kanbanStringedID = req.params.kanbanStringedID
@@ -80,6 +89,27 @@ class specificUserThingsController {
                 }
             })
             .catch(err => console.log("Some Err Occured While Updating Kanban Name In specificUserThingsController", err))
+    }
+
+    async softDeleteKanban(req, res, next){
+        let userStringedID = req.params.userStringedID
+        let kanbanStringedID = req.params.kanbanStringedID
+        let deletedKanban = await Kanban.delete({
+            userStringedID,
+            _id: new mongoose.Types.ObjectId(kanbanStringedID),
+        })
+        if (deletedKanban.modifiedCount === 1){
+            Item.delete({
+                userStringedID,
+                kanbanStringedID
+            })
+                .then(deletedItems => {
+                    if (deletedItems){
+                        res.redirect("/")
+                    }
+                })
+        }
+
     }
 
     addNewItemToKanban(req, res, next){
