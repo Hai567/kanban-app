@@ -1,7 +1,9 @@
 <%- include("./components/header.ejs") %>
 <link rel="stylesheet" href="/assets/css/kanban-detail.css">
 
-    <div class="main">
+
+    <div id="loader"></div>
+    <div id="container-all" class="main">
         <div class="kanban-heading">
             <p class="created-at">Created At: <%= kanbanInfo.createdAt.toString().slice(0, 33) %></p>
             <h2 class="heading-kanban-name" data-userStringedID="<%= kanbanInfo.userStringedID %>" data-kanbanStringedID="<%= kanbanInfo._id.toString() %>"><%= kanbanInfo.kanbanName %></h2>
@@ -16,6 +18,9 @@
                     <% todoItems.forEach(item => { %>
                         <div class="item" draggable="true">
                             <p data-itemStringedID="<%= item._id.toString() %>" data-userStringedID="<%= item.userStringedID %>" data-kanbanStringedID="<%= item.kanbanStringedID %>"><%= item.content %></p>
+                            <form action="/user/abc/kanban/<%= kanbanInfo._id.toString() %>/item/<%= item._id.toString() %>/delete/soft?_method=DELETE" method="POST" class="delete-item-form">
+                                <button type="submit" class="trash-button"><i class="fa-solid fa-trash"></i></button>
+                            </form>
                         </div>
                     <% }) %>
 
@@ -34,6 +39,9 @@
                     <% inProgressItems.forEach(item => { %>
                         <div class="item" draggable="true">
                             <p data-itemStringedID="<%= item._id.toString() %>" data-userStringedID="<%= item.userStringedID %>" data-kanbanStringedID="<%= item.kanbanStringedID %>"><%= item.content %></p>
+                            <form action="/user/abc/kanban/<%= kanbanInfo._id.toString() %>/item/<%= item._id.toString() %>/delete/soft?_method=DELETE" method="POST" class="delete-item-form">
+                                <button type="submit" class="trash-button"><i class="fa-solid fa-trash"></i></button>
+                            </form>
                         </div>
                     <% }) %>
 
@@ -52,6 +60,9 @@
                     <% doneItems.forEach(item => { %>
                         <div class="item" draggable="true">
                             <p data-itemStringedID="<%= item._id.toString() %>" data-userStringedID="<%= item.userStringedID %>" data-kanbanStringedID="<%= item.kanbanStringedID %>"><%= item.content %></p>
+                            <form action="/user/abc/kanban/<%= kanbanInfo._id.toString() %>/item/<%= item._id.toString() %>/delete/soft?_method=DELETE" method="POST" class="delete-item-form">
+                                <button type="submit" class="trash-button"><i class="fa-solid fa-trash"></i></button>
+                            </form>
                         </div>
                     <% }) %>
 

@@ -76,12 +76,27 @@ button.add-item-btn{
     padding: .8em .8em;
     background-color: $item-color;
     cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     p{
         padding: 0;
         margin: 0;
         font-family: $item-font !important;
         font-weight: $item-medium;
     }
+    form.delete-item-form{
+        display: none;
+        button{
+            cursor: pointer;
+        }
+        button:hover{
+            color: $dark-red-trash-can;
+        }
+    }
+}
+.item:hover form.delete-item-form{
+    display: block;
 }
 
 

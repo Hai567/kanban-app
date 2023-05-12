@@ -2,12 +2,14 @@ let Item = require("../models/itemModel")
 let Kanban = require("../models/kanbanModel")
 let mongoose = require("mongoose")
 class specificUserThingsController {
-
-    manageKanbans(req, res, next){
+// Kanban
+    async manageKanbans(req, res, next){
         let userStringedID = req.params.userStringedID
+        let deletedKanbanCount = await Kanban.countDeleted()
+        let allKanbanCount = await Kanban.count()
         Kanban.find({userStringedID})
             .then((allUsersKanbans) => {
-                res.render("manage-kanbans.ejs", {allUsersKanbans})
+                res.render("manage-kanbans.ejs", {allUsersKanbans, deletedKanbanCount, allKanbanCount})
             })
             .catch(err => console.log("there is some err while trying to get all user's kanbans in specificUserThingsController", err))
     }
@@ -91,6 +93,7 @@ class specificUserThingsController {
             .catch(err => console.log("Some Err Occured While Updating Kanban Name In specificUserThingsController", err))
     }
 
+    // Soft Delete Kanban Then Delete Items Inside That Kanban
     async softDeleteKanban(req, res, next){
         let userStringedID = req.params.userStringedID
         let kanbanStringedID = req.params.kanbanStringedID
@@ -105,13 +108,59 @@ class specificUserThingsController {
             })
                 .then(deletedItems => {
                     if (deletedItems){
-                        res.redirect("/")
+                        res.redirect(`/user/${userStringedID}/kanban/manage-kanbans`)
                     }
                 })
         }
-
     }
 
+// Kanban Bin
+    async kanbanBin(req, res, next){
+        let userStringedID = req.params.userStringedID
+        let deletedKanbanCount = await Kanban.countDeleted({userStringedID})
+        Kanban.findDeleted({userStringedID})
+            .then(deletedKanbans => {
+                res.render("bin.ejs", {deletedKanbans, deletedKanbanCount})
+            })
+    }
+
+    // Delete Permanently Kanban Then Delete Items Inside That Kanban
+    deleteKanbanPermanently(req, res, next){
+        let userStringedID = req.params.userStringedID
+        let kanbanStringedID = req.params.kanbanStringedID
+
+        Kanban.findOneAndDelete({
+            userStringedID,
+            _id: new mongoose.Types.ObjectId(kanbanStringedID)
+        })
+        .then(deletedKanban => {
+            // let deletedKanbanStringedID = deletedKanban._id.toString()
+            // let deletedKanbanUserStringedID = deletedKanban.userStringedID
+            res.redirect(`/user/${userStringedID}/deleted/kanban`)
+            // Item.delete({
+            //     kanbanStringedID: deletedKanbanStringedID,
+            //     userStringedID: deletedKanbanUserStringedID
+            // })
+            //     .then(() => {
+            //     })
+        })
+    }
+
+    restoreKanban(req, res, next){
+        let userStringedID = req.params.userStringedID
+        let kanbanStringedID = req.params.kanbanStringedID
+
+        Kanban.restore({
+            userStringedID,
+            _id: new mongoose.Types.ObjectId(kanbanStringedID)
+        })
+        .then(restoredKanban => {
+            res.redirect(`/user/${userStringedID}/kanban/manage-kanbans`)
+        })
+    }
+
+
+// Item
     addNewItemToKanban(req, res, next){
         let userStringedID = req.params.userStringedID
         let kanbanStringedID = req.params.kanbanStringedID
@@ -131,6 +180,20 @@ class specificUserThingsController {
                 }
             })
             .catch(err => console.log("Error In addItemController", err))
+    }
+
+    async softDeleteItem(req, res, next){
+        let userStringedID = req.params.userStringedID
+        let kanbanStringedID = req.params.kanbanStringedID
+        let itemStringedID = req.params.itemStringedID
+        Item.delete({
+            userStringedID,
+            kanbanStringedID,
+            _id: new mongoose.Types.ObjectId(itemStringedID)
+        })
+        .then(deletedItem => {
+            res.redirect(`/user/${userStringedID}/kanban/${kanbanStringedID}`)
+        })
     }
 
     // [PATCH] /item/update/content/:itemStringedID

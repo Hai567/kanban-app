@@ -54,12 +54,24 @@ button.add-item-btn {
   margin: .8em auto;
   padding: .8em .8em;
   background-color: #fadb6f;
-  cursor: move; }
+  cursor: move;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
   .item p {
     padding: 0;
     margin: 0;
     font-family: "Ubuntu", sans-serif !important;
     font-weight: 500; }
+  .item form.delete-item-form {
+    display: none; }
+    .item form.delete-item-form button {
+      cursor: pointer; }
+    .item form.delete-item-form button:hover {
+      color: #b04759; }
+
+.item:hover form.delete-item-form {
+  display: block; }
 
 .section-heading {
   padding-top: 1em;

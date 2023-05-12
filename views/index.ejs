@@ -1,6 +1,9 @@
 <%- include("./components/header.ejs") %>
+
+
     <link rel="stylesheet" href="/assets/css/home.css">
-    <div class="main">
+    <div id="loader"></div>
+    <div id="container-all" class="main">
         <div class="side-bar">
             <a href="/user/abc/kanban/manage-kanbans">All Your Kanbans</a>
             <h5 style="text-align: center; margin: .5em 0;">Recently Added</h5>
@@ -13,7 +16,7 @@
                                 <p><%= kanbans[i].kanbanName %></p>
                             </a>
                             <form action="/user/abc/kanban/<%= kanbans[i]._id.toString() %>/delete/soft?_method=DELETE" method="POST">
-                                <button class="delete-kanban">
+                                <button class="delete-kanban trash-button">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </form>
