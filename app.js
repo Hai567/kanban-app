@@ -12,7 +12,15 @@ let flash = require("connect-flash")
 let checkIfUserIsAuthenticatedThenReturnUserProfile = require("./app/middlewares/checkIfUserIsAuthenticatedThenReturnUserProfile")
 
 // Connect Mongoose
-mongoose.connect("mongodb://127.0.0.1:27017/kanban-app")
+let connectionParams = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+}
+mongoose.set('strictQuery', true)
+mongoose.connect("mongodb+srv://admin-DanielHo:Hai652007@cluster0.s5uuszc.mongodb.net/kanbanApp?retryWrites=true&w=majority", connectionParams)
+    .then(console.log("Connected To Atlas"))
+    .catch(err => console.log("Err encountered while connecting to Atlas"))
+
 // Use Session
 app.use(session({
     secret: process.env.SESSION_SECRET,
