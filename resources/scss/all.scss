@@ -1,0 +1,74 @@
+@import "colors";
+@import "fonts";
+
+// Loader
+#loader{
+    border: 12px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 12px solid #444444;
+    width: 70px;
+    height: 70px;
+    animation: spin 3s linear infinite;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+*::selection{
+    background-color: #E86A33;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+.outer-shadding{
+    box-shadow:  16px 16px 32px #aaaaaa,
+                -16px -16px 32px #ffffff;
+}
+.relative-position{
+    position: relative;
+}
+.stay-at-bottom{
+    position: absolute;
+    bottom: 0;
+}
+.none-display{
+    display: none !important;
+}
+.glass-effect{
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    // border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.dragging{
+    opacity: .5;
+    background-color: red;
+}
+
+.trash-button{
+    background: none;
+    border: none;
+    i{
+        font-size: 1.5em;
+    }
+}
+
+.trash-can-icon{
+    color: $dark-red-trash-can;
+}
+
+.restore-icon{
+    color: $green-restore-trash-can !important;
+}

@@ -15,6 +15,7 @@ items.forEach(item => {
     })
 })
 
+
 boardSections.forEach(boardSection => {
     boardSection.addEventListener("dragover", (event) => {
         event.stopPropagation()
@@ -24,7 +25,8 @@ boardSections.forEach(boardSection => {
             event.stopPropagation()
             var updatedSection = ""
             let updateItemStringedID = draggingItem.children[0].getAttribute("data-itemStringedID")
-            console.log(boardSection)
+            let updateUserStringedID = draggingItem.children[0].getAttribute("data-userStringedID")
+            let updateKanbanStringedID = draggingItem.children[0].getAttribute("data-kanbanStringedID")
             if (boardSection.classList.contains("todo-section")){
                 updatedSection = "todo"
             }
@@ -35,7 +37,7 @@ boardSections.forEach(boardSection => {
                 updatedSection = "done"
             }
             console.log(updatedSection)
-            updateForm.setAttribute("action", `/item/update/section/${updateItemStringedID}?_method=PATCH`)
+            updateForm.setAttribute("action", `/user/${updateUserStringedID}/kanban/${updateKanbanStringedID}/item/update/section/${updateItemStringedID}?_method=PATCH`)
             inputUpdateSection.value = updatedSection
             updateForm.submit()
         })

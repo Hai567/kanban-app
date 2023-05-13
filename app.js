@@ -9,6 +9,7 @@ let methodOverride = require('method-override')
 let session = require("express-session")
 let passport = require("passport")
 let flash = require("connect-flash")
+let checkIfUserIsAuthenticatedThenReturnUserProfile = require("./app/middlewares/checkIfUserIsAuthenticatedThenReturnUserProfile")
 
 // Connect Mongoose
 mongoose.connect("mongodb://127.0.0.1:27017/kanban-app")
@@ -26,6 +27,9 @@ app.use(flash())
 // Use Passport
 app.use(passport.initialize())
 app.use(passport.session())
+
+// Custom Middlewares
+app.use(checkIfUserIsAuthenticatedThenReturnUserProfile)
 
 let routesManager = require("./router/routesManager")
 

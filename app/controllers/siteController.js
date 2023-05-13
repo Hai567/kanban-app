@@ -1,29 +1,19 @@
-let Item = require("../models/itemModel")
+let Kanban = require("../models/kanbanModel")
 class siteController {
 
     index(req, res, next){
-        let todoItems = []
-        let inProgressItems = [] 
-        let doneItems = []
-        Item.find({})
-            .then(items => {
-                items.forEach((item) => {
-                    switch (item.section) {
-                        case "todo":
-                            todoItems.push(item)
-                            break;
-                        case "inProgress":
-                            inProgressItems.push(item)
-                            break
-                        case "done":
-                            doneItems.push(item)
-                            break
-                        default:
-                            break;
-                    }
-                })
-                res.render("index.ejs", {todoItems, inProgressItems, doneItems})
+        if (req.isAuthenticated()){
+            let user = req.user
+            Kanban.find({
+                userStringedID: user._id.toString()
             })
+                .then(kanbans => {
+                    res.render("index.ejs", {kanbans})
+                })
+        }else{
+            res.redirect("/auth/sign-in")
+        }
+
     }
 
 }

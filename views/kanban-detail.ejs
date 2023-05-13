@@ -1,0 +1,89 @@
+<%- include("./components/header.ejs") %>
+<link rel="stylesheet" href="/assets/css/kanban-detail.css">
+
+
+    <div id="loader"></div>
+    <div id="container-all" class="main none-display">
+        <div class="kanban-heading">
+            <p class="created-at">Created At: <%= kanbanInfo.createdAt.toString().slice(0, 33) %></p>
+            <h2 class="heading-kanban-name" data-userStringedID="<%= kanbanInfo.userStringedID %>" data-kanbanStringedID="<%= kanbanInfo._id.toString() %>"><%= kanbanInfo.kanbanName %></h2>
+        </div>
+        <div class="board-container outer-shadding">
+            <div class="different-sections">
+                <div class="todo-section board-section glass-effect relative-position">
+                    <div class="section-heading">
+                        <h3>Todo</h3>
+                        <p>These Items Has Not Been Started</p>
+                    </div>
+                    <% todoItems.forEach(item => { %>
+                        <div class="item" draggable="true">
+                            <p data-itemStringedID="<%= item._id.toString() %>" data-userStringedID="<%= item.userStringedID %>" data-kanbanStringedID="<%= item.kanbanStringedID %>"><%= item.content %></p>
+                            <form action="/user/<%= userProfile._id.toString() %>/kanban/<%= kanbanInfo._id.toString() %>/item/<%= item._id.toString() %>/delete/soft?_method=DELETE" method="POST" class="delete-item-form">
+                                <button type="submit" class="trash-button"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                        </div>
+                    <% }) %>
+
+                    <div class="add-item stay-at-bottom">
+                        <form action="/user/<%= userProfile._id.toString() %>/kanban/<%= items[0].kanbanStringedID %>/item/add/todo" method="POST">
+                            <input autocomplete="off" class="centered-placeholder" type="text" placeholder="Add Item" name="content" required>
+                            <button class="add-item-btn" type="submit"><i class="fa-solid fa-plus"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="in-progress-section board-section glass-effect relative-position">
+                    <div class="section-heading">
+                        <h3>In Progress</h3>
+                        <p>These Items Are Being Done</p>
+                    </div>
+                    <% inProgressItems.forEach(item => { %>
+                        <div class="item" draggable="true">
+                            <p data-itemStringedID="<%= item._id.toString() %>" data-userStringedID="<%= item.userStringedID %>" data-kanbanStringedID="<%= item.kanbanStringedID %>"><%= item.content %></p>
+                            <form action="/user/<%= userProfile._id.toString() %>/kanban/<%= kanbanInfo._id.toString() %>/item/<%= item._id.toString() %>/delete/soft?_method=DELETE" method="POST" class="delete-item-form">
+                                <button type="submit" class="trash-button"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                        </div>
+                    <% }) %>
+
+                    <div class="add-item stay-at-bottom">
+                        <form action="/user/<%= userProfile._id.toString() %>/kanban/<%= items[0].kanbanStringedID %>/item/add/inProgress" method="POST">
+                            <input autocomplete="off" class="centered-placeholder" type="text" placeholder="Add Item" name="content" required>
+                            <button class="add-item-btn" type="submit"><i class="fa-solid fa-plus"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="done-section board-section glass-effect relative-position">
+                    <div class="section-heading">
+                        <h3>Done</h3>
+                        <p>These Items Has Been Done</p>
+                    </div>
+                    <% doneItems.forEach(item => { %>
+                        <div class="item" draggable="true">
+                            <p data-itemStringedID="<%= item._id.toString() %>" data-userStringedID="<%= item.userStringedID %>" data-kanbanStringedID="<%= item.kanbanStringedID %>"><%= item.content %></p>
+                            <form action="/user/<%= userProfile._id.toString() %>/kanban/<%= kanbanInfo._id.toString() %>/item/<%= item._id.toString() %>/delete/soft?_method=DELETE" method="POST" class="delete-item-form">
+                                <button type="submit" class="trash-button"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                        </div>
+                    <% }) %>
+
+                    <div class="add-item stay-at-bottom">
+                        <form action="/user/<%= userProfile._id.toString() %>/kanban/<%= items[0].kanbanStringedID %>/item/add/done" method="POST">
+                            <input autocomplete="off" class="centered-placeholder" type="text" placeholder="Add Item" name="content" required>
+                            <button class="add-item-btn" type="submit"><i class="fa-solid fa-plus"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form id="update-form" class="update-form none-display" action="" method="POST">
+        <input id="input-update-content" type="text" name="updated-content">
+        <input id="input-update-section" type="text" name="updated-section">
+        <input id="input-update-kanban-name" type="text" name="updated-kanban-name">
+    </form>
+    <script src="/assets/js/updateItemContentOnDoubleClick.js"></script>
+    <script src="/assets/js/updateItemSectionOnDragging.js"></script>
+    <script src="/assets/js/updateKanbanNameOnDoubleClick.js"></script>
+
+
+<%- include("./components/footer.ejs") %>

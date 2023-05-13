@@ -22,11 +22,14 @@ router.post("/sign-up", authController.addUser)
 
 // Google Oauth
 router.get("/google/callback", passport.authenticate("google", { 
-    failureRedirect: "/auth/login",
+    failureRedirect: "/auth/sign-in",
     successRedirect: "/"
 }));
 
 router.get("/google",
   passport.authenticate("google", { scope: ["profile", "email", "openid"] }));
+
+
+router.get('/log-out', authController.logOut)
 
 module.exports = router

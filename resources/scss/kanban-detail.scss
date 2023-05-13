@@ -1,16 +1,6 @@
 @import "colors";
 @import "fonts";
 
-body, main{
-    padding: 0;
-    margin: 0;
-    width: 100%;
-}
-
-*::selection{
-    background-color: #E86A33;
-}
-
 div.board-container{
     width: 90%;
     margin: auto;
@@ -31,25 +21,23 @@ div.board-container{
     }
 }
 
+.kanban-heading{
+    h2{
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 2em;
+    }
+}
+
+.created-at{
+    font-size: .7em;
+    margin: 0;
+    text-align: right;
+}
+
 
 .main{
-    padding: 4em;
-}
-
-.outer-shadding{
-    box-shadow:  16px 16px 32px #aaaaaa,
-                -16px -16px 32px #ffffff;
-}
-
-.relative-position{
-    position: relative;
-}
-.stay-at-bottom{
-    position: absolute;
-    bottom: 0;
-}
-.none-display{
-    display: none;
+    padding: 2.5em 4em 4em 4em;
 }
 
 div.board-section{
@@ -88,22 +76,29 @@ button.add-item-btn{
     padding: .8em .8em;
     background-color: $item-color;
     cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     p{
         padding: 0;
         margin: 0;
         font-family: $item-font !important;
         font-weight: $item-medium;
     }
+    form.delete-item-form{
+        display: none;
+        button{
+            cursor: pointer;
+        }
+        button:hover{
+            color: $dark-red-trash-can;
+        }
+    }
+}
+.item:hover form.delete-item-form{
+    display: block;
 }
 
-.glass-effect{
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    // border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-}
 
 .section-heading{
     padding-top: 1em;
@@ -129,9 +124,4 @@ button.add-item-btn{
     height: max-content;
     outline: none;
     cursor: text;
-}
-
-.dragging{
-    opacity: .5;
-    background-color: red;
 }

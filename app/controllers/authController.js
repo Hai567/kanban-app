@@ -23,6 +23,7 @@ class authController {
                         email: req.body.email,
                         userName: req.body.userName,
                         hashedPassword,
+                        loginMethod: "Email and Password"
                     })
                     res.redirect("/auth/sign-in")
                 }
@@ -32,6 +33,13 @@ class authController {
 
     checkUser(req, res, next){
         console.log(req.body)
+    }
+
+    logOut(req, res, next){
+        req.logout(function(err) {
+            if (err) { return next(err) }
+            res.redirect('/')
+        });
     }
 
 }

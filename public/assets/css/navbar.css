@@ -28,17 +28,62 @@ nav#navbar {
       flex: 1;
       display: flex;
       align-items: center;
-      justify-content: right;
-      gap: 8px; }
-      nav#navbar div.nav-container div.nav-sign h1.separation-line {
-        color: grey;
-        margin: 0;
-        margin-top: 2px; }
+      justify-content: right; }
+      nav#navbar div.nav-container div.nav-sign hr.separation-line {
+        width: 35px;
+        border-top: 3px solid grey;
+        transform: rotate(90deg);
+        margin: 0; }
       nav#navbar div.nav-container div.nav-sign .sign-link {
         text-decoration: none;
         color: grey;
         font-family: "Montserrat", sans-serif;
         font-weight: 700; }
+    nav#navbar div.nav-container div.nav-user {
+      flex: 1;
+      color: grey;
+      cursor: pointer; }
+      nav#navbar div.nav-container div.nav-user div.drop-down {
+        position: relative;
+        width: fit-content;
+        float: right; }
+        nav#navbar div.nav-container div.nav-user div.drop-down div.user {
+          margin: 0 1em;
+          display: flex;
+          align-items: center;
+          justify-content: right;
+          gap: 8px; }
+          nav#navbar div.nav-container div.nav-user div.drop-down div.user p {
+            color: grey;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 700;
+            margin: 0; }
+          nav#navbar div.nav-container div.nav-user div.drop-down div.user img {
+            border-radius: 50%;
+            width: 3em; }
+        nav#navbar div.nav-container div.nav-user div.drop-down div.nav-user-options {
+          position: absolute;
+          background-color: blue;
+          width: 100%;
+          position: absolute;
+          background-color: #f1f1f1;
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          z-index: 1;
+          padding: 1em 0;
+          display: none; }
+          nav#navbar div.nav-container div.nav-user div.drop-down div.nav-user-options a {
+            cursor: pointer;
+            padding: 0.4em 10% 0.4em 0.4em;
+            display: block;
+            text-align: right;
+            text-decoration: none;
+            color: black;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500; }
+      nav#navbar div.nav-container div.nav-user div.drop-down:hover div.nav-user-options {
+        display: block; }
+      nav#navbar div.nav-container div.nav-user a:hover {
+        background-color: #A0D8B3; }
 
 .nav-icon {
   font-size: 30px;

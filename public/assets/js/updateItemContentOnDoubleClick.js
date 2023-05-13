@@ -20,8 +20,10 @@ document.querySelectorAll(".board-container .board-section .item p").forEach(fun
             // If User Changed Sth, Update It
             else{
                 let updatedContent = this.textContent
-                let updateItemStringedId = event.getAttribute("data-itemStringedID")
-                updateForm.setAttribute("action", `/item/update/content/${updateItemStringedId}?_method=PATCH`)
+                let itemStringedID = event.getAttribute("data-itemStringedID")
+                let userStringedID = event.getAttribute("data-userStringedID")
+                let kanbanStringedID = event.getAttribute("data-kanbanStringedID")
+                updateForm.setAttribute("action", `/user/${userStringedID}/kanban/${kanbanStringedID}/item/update/content/${itemStringedID}?_method=PATCH`)
                 inputUpdateContent.value = updatedContent
                 updateForm.submit()
             }
