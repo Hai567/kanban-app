@@ -7,6 +7,7 @@ div.main {
     grid-template-columns: repeat(12, 1fr);
     div.side-bar {
         grid-column: 1/4;
+        text-align: center;
     }
     .board-container {
         grid-column: 4/13;

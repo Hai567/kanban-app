@@ -2,10 +2,18 @@ let Kanban = require("../models/kanbanModel")
 class siteController {
 
     index(req, res, next){
-        Kanban.find({})
-            .then(kanbans => {
-                res.render("index.ejs", {kanbans})
+        if (req.isAuthenticated()){
+            let user = req.user
+            Kanban.find({
+                userStringedID: user._id.toString()
             })
+                .then(kanbans => {
+                    res.render("index.ejs", {kanbans})
+                })
+        }else{
+            res.redirect("/auth/sign-in")
+        }
+
     }
 
 }

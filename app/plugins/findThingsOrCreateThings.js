@@ -28,23 +28,29 @@ module.exports = async function findThingsOrCreateThings(schema) {
       else{
         try {
           let result = await this.findOne(findProps)
+          // if user is existed
           if (result) {
             if (cb){ // If User Want To Use Callback, Return Callback
               await cb (null, result)
+            }else{
+              return Promise.resolve(result) // If User Want To Use Promise, Return Promise
             }
-            return Promise.resolve(result) // If User Want To Use Promise, Return Promise
-          }else{
+          }
+          // If user is not existed
+          else{
             let mergedProps = {...findProps, ...createAdditionalProps}
             if (cb){ // If User Want To Use Callback, Return Callback
               await cb (null, (await this.create(mergedProps)))
+            }else{
+              return Promise.resolve((await this.create(mergedProps))) // If User Want To Use Promise, Return Promise
             }
-            return Promise.resolve((await this.create(mergedProps))) // If User Want To Use Promise, Return Promise
           }
         } catch (error) {
           if (cb){ // If User Want To Use Callback, Return Callback
             await cb(error, null)
+          }else{
+            return Promise.reject(null) // If User Want To Use Promise, Return Promise
           }
-          return Promise.reject(null) // If User Want To Use Promise, Return Promise
         }
       }
     }

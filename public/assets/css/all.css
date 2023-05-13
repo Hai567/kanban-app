@@ -34,7 +34,7 @@ body {
   bottom: 0; }
 
 .none-display {
-  display: none; }
+  display: none !important; }
 
 .glass-effect {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));

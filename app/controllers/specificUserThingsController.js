@@ -4,48 +4,56 @@ let mongoose = require("mongoose")
 class specificUserThingsController {
 // Kanban
     async manageKanbans(req, res, next){
-        let userStringedID = req.params.userStringedID
-        let deletedKanbanCount = await Kanban.countDeleted()
-        let allKanbanCount = await Kanban.count()
-        Kanban.find({userStringedID})
-            .then((allUsersKanbans) => {
-                res.render("manage-kanbans.ejs", {allUsersKanbans, deletedKanbanCount, allKanbanCount})
-            })
-            .catch(err => console.log("there is some err while trying to get all user's kanbans in specificUserThingsController", err))
+        if (req.isAuthenticated()){
+            let userStringedID = req.params.userStringedID
+            let deletedKanbanCount = await Kanban.countDeleted()
+            let allKanbanCount = await Kanban.count()
+            Kanban.find({userStringedID})
+                .then((allUsersKanbans) => {
+                    res.render("manage-kanbans.ejs", {allUsersKanbans, deletedKanbanCount, allKanbanCount})
+                })
+                .catch(err => console.log("there is some err while trying to get all user's kanbans in specificUserThingsController", err))
+        }else{
+            res.redirect("/auth/sign-in")
+        }
     }
 
     async getKanbanDetail(req, res, next){
-        let userStringedID = req.params.userStringedID
-        let kanbanStringedID = req.params.kanbanStringedID
-        let todoItems = []
-        let inProgressItems = []
-        let doneItems = []
-        let kanbanInfo = await Kanban.findOne({
-            userStringedID,
-            _id: new mongoose.Types.ObjectId(kanbanStringedID)
-        })
-        Item.find({
-            userStringedID,
-            kanbanStringedID
-        })
-            .then(items => {
-                items.forEach((item) => {
-                    switch (item.section) {
-                        case "todo":
-                            todoItems.push(item)
-                            break;
-                        case "inProgress":
-                            inProgressItems.push(item)
-                            break
-                        case "done":
-                            doneItems.push(item)
-                            break
-                        default:
-                            break;
-                    }
-                })
-                res.render("kanban-detail.ejs", {items, todoItems, inProgressItems, doneItems, kanbanInfo})
+        if (req.isAuthenticated()){
+            let userStringedID = req.params.userStringedID
+            let kanbanStringedID = req.params.kanbanStringedID
+            let todoItems = []
+            let inProgressItems = []
+            let doneItems = []
+            let kanbanInfo = await Kanban.findOne({
+                userStringedID,
+                _id: new mongoose.Types.ObjectId(kanbanStringedID)
             })
+            Item.find({
+                userStringedID,
+                kanbanStringedID
+            })
+                .then(items => {
+                    items.forEach((item) => {
+                        switch (item.section) {
+                            case "todo":
+                                todoItems.push(item)
+                                break;
+                            case "inProgress":
+                                inProgressItems.push(item)
+                                break
+                            case "done":
+                                doneItems.push(item)
+                                break
+                            default:
+                                break;
+                        }
+                    })
+                    res.render("kanban-detail.ejs", {items, todoItems, inProgressItems, doneItems, kanbanInfo})
+                })
+        }else{
+            res.redirect("/auth/sign-in")
+        }
     }
 
     addNewKanban(req, res, next){

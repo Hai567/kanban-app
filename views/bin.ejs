@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="/assets/css/manage-kanban.css">
 
 <div id="loader"></div>
-<div id="container-all" class="manage-kanban-container">
+<div id="container-all" class="manage-kanban-container none-display">
     <div class="heading">
         <h1 style="text-align: center; margin: 0;">Bin(<%= deletedKanbanCount %>)</h1>
         <hr  style="width: 85%; text-align: center; margin: auto;">
@@ -29,12 +29,12 @@
                     <td><%= deletedKanbans[i].createdAt %></td>
                     <td><%= deletedKanbans[i].updatedAt %></td>
                     <td>
-                        <form action="/user/abc/kanban/<%= deletedKanbans[i]._id.toString() %>/delete/permanent?_method=DELETE" method="POST">
+                        <form action="/user/<%= userProfile._id.toString() %>/kanban/<%= deletedKanbans[i]._id.toString() %>/delete/permanent?_method=DELETE" method="POST">
                             <button class="trash-button" type="submit"><i class="fa-solid fa-trash-can trash-can-icon"></i></button>
                         </form>
                     </td>
                     <td>
-                        <form action="/user/abc/kanban/<%= deletedKanbans[i]._id.toString() %>/restore?_method=PUT" method="POST">
+                        <form action="/user/<%= userProfile._id.toString() %>/kanban/<%= deletedKanbans[i]._id.toString() %>/restore?_method=PUT" method="POST">
                             <button class="trash-button" type="submit"><i class="fa-solid fa-trash-can-arrow-up restore-icon"></i></button>
                         </form>
                     </td>

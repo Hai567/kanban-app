@@ -57,7 +57,8 @@ div.main {
     div.main div.sign-container .sign-img {
       display: flex;
       align-items: center;
-      justify-content: center; }
+      justify-content: center;
+      flex-wrap: wrap; }
       div.main div.sign-container .sign-img img {
         width: 100%; }
 

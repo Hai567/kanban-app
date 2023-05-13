@@ -5,10 +5,10 @@
 
 
     <div id="loader"></div>
-    <div id="container-all" class="manage-kanban-container">
+    <div id="container-all" class="manage-kanban-container none-display">
         <div class="heading">
             <h1 style="text-align: center; margin: 0;">All Kanban(<%= allKanbanCount %>)</h1>
-            <a type="button" class="btn-link" style="margin-left: 10%;" href="/user/abc/deleted/kanban">Bin(<%= deletedKanbanCount %>)</a>
+            <a type="button" class="btn-link" style="margin-left: 10%;" href="/user/<%= userProfile._id.toString() %>/deleted/kanban">Bin(<%= deletedKanbanCount %>)</a>
             <hr  style="width: 85%; text-align: center; margin: auto;">
         </div>
         <table class="table table-striped">
@@ -29,7 +29,8 @@
                       <td><%= allUsersKanbans[i].createdAt %></td>
                       <td><%= allUsersKanbans[i].updatedAt %></td>
                       <td>
-                        <form action="/user/abc/kanban/<%= allUsersKanbans[i]._id.toString() %>/delete/soft?_method=DELETE" method="POST">
+                        <form action="/user/<%= userProfile._id.toString
+        () %>/kanban/<%= allUsersKanbans[i]._id.toString() %>/delete/soft?_method=DELETE" method="POST">
                             <button class="trash-button" type="submit"><i class="fa-solid fa-trash-can trash-can-icon"></i></button>
                         </form>
                         <a href=></a>

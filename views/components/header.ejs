@@ -26,11 +26,27 @@
         <div class="nav-brand">
           <a href="/">Home</a>
         </div>
-        <div class="nav-sign">
-          <a href="/auth/sign-up" class="sign-link sign-up-link">Sign Up</a>
-          <h1 class="separation-line">|</h1>
-          <a href="/auth/sign-in" class="sign-link sign-in-link">Sign In</a>
-        </div>
+        <!-- If user is not logged in -->
+        <% if (!userProfile) { %>
+          <div class="nav-sign">
+            <a href="/auth/sign-up" class="sign-link sign-up-link">Sign Up</a>
+            <hr class="separation-line">
+            <a href="/auth/sign-in" class="sign-link sign-in-link">Sign In</a>
+          </div>
+        <% } else { %>
+        <!-- If user is logged in change "nav-sign" to "nav-user" -->
+         <div class="nav-user">
+          <div class="drop-down">
+            <div class="user">
+              <p><%= userProfile.userName %></p>
+              <img src="<%= userProfile.avatar %>" alt="">
+            </div>
+            <div class="nav-user-options">
+                <a href="/auth/log-out">Log Out <i class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+          </div>
+         </div>
+        <% } %>
       </div>
     </nav>
     <!-- Loader -->

@@ -3,7 +3,8 @@ div.main {
   display: grid;
   grid-template-columns: repeat(12, 1fr); }
   div.main div.side-bar {
-    grid-column: 1/4; }
+    grid-column: 1/4;
+    text-align: center; }
   div.main .board-container {
     grid-column: 4/13; }
 

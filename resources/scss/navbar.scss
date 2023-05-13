@@ -31,22 +31,78 @@ nav#navbar{
                 font-size: 30px;
             }
         }
+        // If user is not logged in
         div.nav-sign{
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: right;
-            gap: 8px;
-            h1.separation-line{
-                color: grey;
+            hr.separation-line{
+                width: 35px;
+                border-top: 3px solid grey;
+                transform: rotate(90deg);
                 margin: 0;
-                margin-top: 2px;
             }
             .sign-link{
                 text-decoration: none;
                 color: grey;
                 font-family: $heading-font;
                 font-weight: $heading-bold;
+            }
+        }
+        // If user is logged in change "nav-sign" to "nav-user"
+        div.nav-user{
+            flex: 1;
+            color: grey;
+            cursor: pointer;
+            div.drop-down{
+                position: relative;
+                width: fit-content;
+                float: right;
+                div.user{
+                    margin: 0 1em;
+                    display: flex;
+                    align-items: center;
+                    justify-content: right;
+                    gap: 8px;
+                    p{
+                        color: grey;
+                        font-family: $heading-font;
+                        font-weight: $heading-bold;
+                        margin: 0;
+                    }
+                    img{
+                        border-radius: 50%;
+                        width: 3em;
+                    }
+                }
+                div.nav-user-options{
+                    position: absolute;
+                    background-color: blue;
+                    width: 100%;
+                    position: absolute;
+                    background-color: #f1f1f1;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    z-index: 1;
+                    padding: 1em 0;
+                    display: none;
+                    a{
+                        cursor: pointer;
+                        padding: 0.4em 10% 0.4em 0.4em;
+                        display: block;
+                        text-align: right;
+                        text-decoration: none;
+                        color: black;
+                        font-family: $heading-font;
+                        font-weight: $heading-medium;
+                    }
+                }
+            }
+            div.drop-down:hover div.nav-user-options{
+                display: block;
+            }
+            a:hover{
+                background-color: $green-restore-trash-can;
             }
         }
     }
