@@ -15,10 +15,12 @@ let checkIfUserIsAuthenticatedThenReturnUserProfile = require("./app/middlewares
 mongoose.connect("mongodb://127.0.0.1:27017/kanban-app")
 // Use Session
 app.use(session({
+    store: new RedisStore(),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
+        secure: true,
         maxAge: 1000 * 60 * 60 * 24 // milisec|sec|minute|hour // 1 day
     }
 }))
