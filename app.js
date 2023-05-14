@@ -9,6 +9,7 @@ let methodOverride = require('method-override')
 let session = require("express-session")
 let passport = require("passport")
 let flash = require("connect-flash")
+let RedisStore = "connect-redis"
 let checkIfUserIsAuthenticatedThenReturnUserProfile = require("./app/middlewares/checkIfUserIsAuthenticatedThenReturnUserProfile")
 
 // Connect Mongoose
