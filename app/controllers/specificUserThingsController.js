@@ -142,18 +142,21 @@ class specificUserThingsController {
             _id: new mongoose.Types.ObjectId(kanbanStringedID)
         })
         .then(deletedKanban => {
-            // let deletedKanbanStringedID = deletedKanban._id.toString()
-            // let deletedKanbanUserStringedID = deletedKanban.userStringedID
-            res.redirect(`/user/${userStringedID}/deleted/kanban`)
-            // Item.delete({
-            //     kanbanStringedID: deletedKanbanStringedID,
-            //     userStringedID: deletedKanbanUserStringedID
-            // })
-            //     .then(() => {
-            //     })
+            let userStringedID = deletedKanban.userStringedID
+            let kanbanStringedID = deletedKanban._id.toString()
+            Item.delete({
+                userStringedID,
+                kanbanStringedID
+            })
+                .then((deletedItems) => {
+                    if (deletedItems){
+                        res.redirect(`/user/${userStringedID}/deleted/kanban`)
+                    }
+                })
         })
     }
 
+    // Restore kanban then restore the items inside that kanban
     restoreKanban(req, res, next){
         let userStringedID = req.params.userStringedID
         let kanbanStringedID = req.params.kanbanStringedID
@@ -163,7 +166,17 @@ class specificUserThingsController {
             _id: new mongoose.Types.ObjectId(kanbanStringedID)
         })
         .then(restoredKanban => {
-            res.redirect(`/user/${userStringedID}/kanban/manage-kanbans`)
+            let userStringedID = restoredKanban.userStringedID
+            let kanbanStringedID = restoredKanban._id.toString()
+            Item.restore({
+                userStringedID,
+                kanbanStringedID
+            })
+                .then(restoredItems => {
+                    if (restoredItems){
+                        res.redirect(`/user/${userStringedID}/kanban/manage-kanbans`)
+                    }
+                })
         })
     }
 

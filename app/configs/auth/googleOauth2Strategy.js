@@ -9,7 +9,7 @@ module.exports = function initGoogleOauth(param) {
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: process.env.GOOGLE_CALLBACK_URL,
+        callbackURL: process.env.GOOGLE_CALLBACK_URL_DEPLOYMENT,
         scope: ["profile", "email", "openid"]
     },
     function(accessToken, refreshToken, profile, cb) {

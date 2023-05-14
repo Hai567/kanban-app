@@ -17,7 +17,7 @@ let connectionParams = {
     useUnifiedTopology: true 
 }
 mongoose.set('strictQuery', true)
-mongoose.connect("mongodb+srv://admin-DanielHo:Hai652007@cluster0.s5uuszc.mongodb.net/kanbanApp?retryWrites=true&w=majority", connectionParams)
+mongoose.connect(process.env.MONGODB_ATLAS_URL, connectionParams)
     .then(console.log("Connected To Atlas"))
     .catch(err => console.log("Err encountered while connecting to Atlas"))
 
