@@ -26,7 +26,9 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    store: new RedisStore(),
     cookie: {
+        secure: true,
         maxAge: 1000 * 60 * 60 * 24 // milisec|sec|minute|hour // 1 day
     }
 }))
