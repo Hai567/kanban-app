@@ -9,12 +9,15 @@ let methodOverride = require('method-override')
 let session = require("express-session")
 let passport = require("passport")
 let flash = require("connect-flash")
+let MongoStore = require('connect-mongo')
 let checkIfUserIsAuthenticatedThenReturnUserProfile = require("./app/middlewares/checkIfUserIsAuthenticatedThenReturnUserProfile")
 
 // Connect Mongoose
-mongoose.connect("mongodb://127.0.0.1:27017/kanban-app")
+mongoose.set('strictQuery', false)
+mongoose.connect(process.env.MONGODB_DEV_URL)
 // Use Session
 app.use(session({
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_DEV_URL }),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
