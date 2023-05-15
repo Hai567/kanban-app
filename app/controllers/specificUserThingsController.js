@@ -144,11 +144,12 @@ class specificUserThingsController {
         .then(deletedKanban => {
             let userStringedID = deletedKanban.userStringedID
             let kanbanStringedID = deletedKanban._id.toString()
-            Item.delete({
+            Item.deleteMany({
                 userStringedID,
                 kanbanStringedID
             })
                 .then((deletedItems) => {
+                    console.log(deletedItems)
                     if (deletedItems){
                         res.redirect(`/user/${userStringedID}/deleted/kanban`)
                     }

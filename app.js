@@ -8,8 +8,8 @@ let mongoose = require("mongoose")
 let methodOverride = require('method-override')
 let session = require("express-session")
 let passport = require("passport")
+let MongoStore = require('connect-mongo')
 let flash = require("connect-flash")
-let RedisStore = "connect-redis"
 let checkIfUserIsAuthenticatedThenReturnUserProfile = require("./app/middlewares/checkIfUserIsAuthenticatedThenReturnUserProfile")
 
 // Connect Mongoose
@@ -24,12 +24,11 @@ mongoose.connect(process.env.MONGODB_ATLAS_URL, connectionParams)
 
 // Use Session
 app.use(session({
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_ATLAS_URL }),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    store: new RedisStore(),
     cookie: {
-        secure: true,
         maxAge: 1000 * 60 * 60 * 24 // milisec|sec|minute|hour // 1 day
     }
 }))
